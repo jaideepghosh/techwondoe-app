@@ -1,17 +1,22 @@
 import React from "react";
 import Authenticated from "@/Layouts/Authenticated";
+import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/inertia-react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import { DataGrid } from "@mui/x-data-grid";
 
-const ActionButtons = (id) => {
+function destroy(id) {
+    if (confirm("Are you sure you want to delete this contact?")) {
+        Inertia.delete(route("companies.destroy", id));
+    }
+}
+
+const ActionButtons = ({ id }) => {
     return (
         <>
-            <a href={`/${id.id}`} className="">
-                Edit
-            </a>
+            <InertiaLink href={route("companies.edit", id)}>Edit</InertiaLink>
             <span className="pl-2 pr-2">|</span>
-            <a href={`/${id.id}`}>Delete</a>
+            <div onClick={(_) => destroy(id)}>Delete</div>
         </>
     );
 };

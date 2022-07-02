@@ -4183,7 +4183,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-var appName = ((_a = window.document.getElementsByTagName('title')[0]) === null || _a === void 0 ? void 0 : _a.innerText) || 'Laravel';
+var appName = ((_a = window.document.getElementsByTagName("title")[0]) === null || _a === void 0 ? void 0 : _a.innerText) || "Laravel";
 (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.createInertiaApp)({
   title: function title(_title) {
     return "".concat(_title, " - ").concat(appName);
@@ -4199,7 +4199,7 @@ var appName = ((_a = window.document.getElementsByTagName('title')[0]) === null 
   }
 });
 _inertiajs_progress__WEBPACK_IMPORTED_MODULE_3__.InertiaProgress.init({
-  color: '#4B5563'
+  color: "#4B5563"
 });
 
 /***/ }),

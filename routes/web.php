@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -28,8 +29,6 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/companies', function () {
-    return Inertia::render('Companies');
-})->middleware(['auth', 'verified'])->name('companies');
+Route::resource('companies', CompanyController::class);
 
 require __DIR__.'/auth.php';

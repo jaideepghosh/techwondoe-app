@@ -5543,7 +5543,7 @@ var Create = function Create(props) {
           className: "bg-white overflow-hidden shadow-sm sm:rounded-lg",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "p-6 bg-white border-b border-gray-200",
-            children: "You're logged in! Really"
+            children: "You're logged in!"
           })
         })
       })

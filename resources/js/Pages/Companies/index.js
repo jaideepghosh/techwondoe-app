@@ -2,6 +2,72 @@ import React from "react";
 import Authenticated from "@/Layouts/Authenticated";
 import { Head } from "@inertiajs/inertia-react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
+import { DataGrid } from "@mui/x-data-grid";
+
+const ActionButtons = (id) => {
+    return (
+        <>
+            <a href={`/${id.id}`} className="">
+                Edit
+            </a>
+            <span className="pl-2 pr-2">|</span>
+            <a href={`/${id.id}`}>Delete</a>
+        </>
+    );
+};
+
+const columns = [
+    {
+        field: "id",
+        headerName: "ID",
+        width: 70,
+    },
+    {
+        field: "name",
+        headerName: "Company Name",
+        width: 250,
+    },
+    {
+        field: "ceo",
+        headerName: "CEO Name",
+        width: 200,
+    },
+    {
+        field: "address",
+        headerName: "Address",
+        type: "number",
+        width: 300,
+    },
+    {
+        field: "inception_date",
+        headerName: "Inception date",
+        type: "number",
+        width: 160,
+    },
+    {
+        field: "action",
+        headerName: "Action",
+        description: "This column has a value getter and is not sortable.",
+        sortable: false,
+        width: 160,
+        renderCell: (params) => {
+            return <ActionButtons id={params.row.id} />;
+        },
+    },
+];
+
+const DataTable = ({ rows }) => {
+    return (
+        <div style={{ height: 400, width: "100%" }}>
+            <DataGrid
+                rows={rows}
+                columns={columns}
+                pageSize={5}
+                rowsPerPageOptions={[5]}
+            />
+        </div>
+    );
+};
 
 const Index = (props) => {
     const { companies } = usePage().props;
@@ -33,72 +99,8 @@ const Index = (props) => {
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        {/* <div className="p-6 bg-white border-b border-gray-200">
-                            You're logged in! Really
-                        </div> */}
                         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th scope="col" className="px-6 py-3">
-                                            Company name
-                                        </th>
-                                        <th scope="col" className="px-6 py-3">
-                                            CEO
-                                        </th>
-                                        <th scope="col" className="px-6 py-3">
-                                            Address
-                                        </th>
-                                        <th scope="col" className="px-6 py-3">
-                                            Inception date
-                                        </th>
-                                        <th scope="col" className="px-6 py-3">
-                                            <span className="sr-only">
-                                                Edit
-                                            </span>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {companies.map((company) => (
-                                        <tr
-                                            key={company.id}
-                                            className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                                        >
-                                            <th
-                                                scope="row"
-                                                className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-                                            >
-                                                {company.name}
-                                            </th>
-                                            <td className="px-6 py-4">
-                                                {company.ceo}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                {company.address}
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                {company.inception_date}
-                                            </td>
-                                            <td className="px-6 py-4 text-right">
-                                                <a
-                                                    href="#"
-                                                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                                                >
-                                                    Edit
-                                                </a>{" "}
-                                                |{" "}
-                                                <a
-                                                    href="#"
-                                                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                                                >
-                                                    Delete
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                            <DataTable rows={companies} />
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/inertia-react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import { DataGrid } from "@mui/x-data-grid";
+import AlertMessage from "@/Components/AlertMessage";
 
 function destroy(id) {
     if (confirm("Are you sure you want to delete this contact?")) {
@@ -102,6 +103,7 @@ const Index = (props) => {
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <AlertMessage />
                         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                             <DataTable rows={companies} />
                         </div>

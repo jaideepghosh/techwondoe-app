@@ -45,7 +45,7 @@ class CompanyController extends Controller
             $request->validated()
         );
 
-        return Redirect::route('companies.index');
+        return Redirect::route('companies.index', ['message' => 'Company has been created.']);
     }
 
     /**
@@ -89,7 +89,7 @@ class CompanyController extends Controller
     {
         $company->update($request->validated());
 
-        return Redirect::route('companies.index');
+        return Redirect::route('companies.index', ['message' => 'Company has been saved.']);
     }
 
     /**
@@ -102,6 +102,6 @@ class CompanyController extends Controller
     {
         $company->delete();
 
-        return Redirect::route('companies.index');
+        return Redirect::route('companies.index', ['message' => 'Company has been deleted.']);
     }
 }

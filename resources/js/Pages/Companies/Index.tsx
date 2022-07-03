@@ -1,13 +1,16 @@
 import React from "react";
+// @ts-ignore
 import Authenticated from "@/Layouts/Authenticated";
 import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/inertia-react";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
 import { DataGrid } from "@mui/x-data-grid";
+// @ts-ignore
 import AlertMessage from "@/Components/AlertMessage";
 
 function destroy(id) {
     if (confirm("Are you sure you want to delete this contact?")) {
+        // @ts-ignore
         Inertia.delete(route("companies.destroy", id));
     }
 }
@@ -15,7 +18,12 @@ function destroy(id) {
 const ActionButtons = ({ id }) => {
     return (
         <>
-            <InertiaLink href={route("companies.edit", id)}>Edit</InertiaLink>
+            <InertiaLink
+                // @ts-ignore
+                href={route("companies.edit", id)}
+            >
+                Edit
+            </InertiaLink>
             <span className="pl-2 pr-2">|</span>
             <div onClick={(_) => destroy(id)}>Delete</div>
         </>
@@ -89,6 +97,7 @@ const Index = (props) => {
                     <div className="flex items-center ml-auto">
                         <InertiaLink
                             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                            // @ts-ignore
                             href={route("companies.create")}
                         >
                             <span>Create</span>

@@ -1,4 +1,5 @@
 import React from "react";
+// @ts-ignore
 import Authenticated from "@/Layouts/Authenticated";
 import { Head } from "@inertiajs/inertia-react";
 import { InertiaLink, useForm } from "@inertiajs/inertia-react";
@@ -14,6 +15,7 @@ const Create = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        // @ts-ignore
         post(route("companies.store"));
     };
 
@@ -29,6 +31,7 @@ const Create = (props) => {
                     <div className="flex items-center ml-auto">
                         <InertiaLink
                             className="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                            // @ts-ignore
                             href={route("companies.index")}
                         >
                             <span>View</span>
@@ -56,7 +59,7 @@ const Create = (props) => {
                                             }
                                             required
                                             value={data.name}
-                                            error={errors.name}
+                                            error={!!errors.name}
                                             helperText={errors.name}
                                             variant="outlined"
                                         />
@@ -71,7 +74,7 @@ const Create = (props) => {
                                             }
                                             required
                                             value={data.ceo}
-                                            error={errors.ceo}
+                                            error={!!errors.ceo}
                                             helperText={errors.ceo}
                                             variant="outlined"
                                         />
@@ -89,7 +92,7 @@ const Create = (props) => {
                                             }
                                             required
                                             value={data.address}
-                                            error={errors.address}
+                                            error={!!errors.address}
                                             helperText={errors.address}
                                             variant="outlined"
                                         />
@@ -108,7 +111,7 @@ const Create = (props) => {
                                             required
                                             type="date"
                                             value={data.inception_date}
-                                            error={errors.inception_date}
+                                            error={!!errors.inception_date}
                                             helperText={errors.inception_date}
                                             variant="outlined"
                                         />

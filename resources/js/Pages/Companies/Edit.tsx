@@ -1,11 +1,12 @@
 import React from "react";
+// @ts-ignore
 import Authenticated from "@/Layouts/Authenticated";
 import { Head } from "@inertiajs/inertia-react";
 import { InertiaLink, usePage, useForm } from "@inertiajs/inertia-react";
 import { Button, Grid, TextField } from "@mui/material";
 
 const Edit = (props) => {
-    const { company } = usePage().props;
+    const { company } = usePage<any>().props;
 
     const { data, setData, errors, put, processing } = useForm({
         name: company.name || "",
@@ -16,6 +17,7 @@ const Edit = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        // @ts-ignore
         put(route("companies.update", company.id));
     };
 
@@ -31,6 +33,7 @@ const Edit = (props) => {
                     <div className="flex items-center ml-auto">
                         <InertiaLink
                             className="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                            // @ts-ignore
                             href={route("companies.index")}
                         >
                             <span>View</span>
@@ -58,7 +61,7 @@ const Edit = (props) => {
                                             }
                                             required
                                             value={data.name}
-                                            error={errors.name}
+                                            error={!!errors.name}
                                             helperText={errors.name}
                                             variant="outlined"
                                         />
@@ -73,7 +76,7 @@ const Edit = (props) => {
                                             }
                                             required
                                             value={data.ceo}
-                                            error={errors.ceo}
+                                            error={!!errors.ceo}
                                             helperText={errors.ceo}
                                             variant="outlined"
                                         />
@@ -90,7 +93,7 @@ const Edit = (props) => {
                                                 )
                                             }
                                             value={data.address}
-                                            error={errors.address}
+                                            error={!!errors.address}
                                             helperText={errors.address}
                                             variant="outlined"
                                         />
@@ -108,7 +111,7 @@ const Edit = (props) => {
                                             }
                                             type="date"
                                             value={data.inception_date}
-                                            error={errors.inception_date}
+                                            error={!!errors.inception_date}
                                             helperText={errors.inception_date}
                                             variant="outlined"
                                         />

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use Illuminate\Support\Facades\Request;
 use App\Http\Requests\CompanyUpdateRequest;
+use App\Http\Requests\CompanyStoreRequest;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
 
@@ -38,7 +39,7 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyStoreRequest $request)
     {
         Company::create(
             $request->validated()

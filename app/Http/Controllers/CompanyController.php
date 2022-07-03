@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
+use App\Http\Requests\CompanyUpdateRequest;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
 
@@ -83,7 +84,7 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(Company $company, CompanyUpdateRequest $request)
     {
         $company->update($request->validated());
 

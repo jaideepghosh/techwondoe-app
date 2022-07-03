@@ -81,13 +81,11 @@ const Index = (props) => {
             auth={props.auth}
             errors={props.errors}
             header={
-                <div className="grid grid-cols-4">
-                    <div className="col-span-3">
-                        <h2 className="font-semibold text-xl text-gray-800 leading-tight col-span-4">
-                            Companies
-                        </h2>
-                    </div>
-                    <div>
+                <div className="flex items-center">
+                    <h2 className="font-semibold text-xl text-gray-800 leading-tight col-span-4">
+                        Companies
+                    </h2>
+                    <div className="flex items-center ml-auto">
                         <InertiaLink
                             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                             href={route("companies.create")}

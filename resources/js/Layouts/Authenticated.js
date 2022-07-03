@@ -32,7 +32,8 @@ export default function Authenticated({ auth, header, children }) {
                                     href={route("companies.index")}
                                     active={
                                         route().current("companies.index") ||
-                                        route().current("companies.create")
+                                        route().current("companies.create") ||
+                                        route().current("companies.edit")
                                     }
                                 >
                                     Companies

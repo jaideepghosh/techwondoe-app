@@ -1,34 +1,43 @@
 import React from "react";
-// @ts-ignore
-import Authenticated from "@/Layouts/Authenticated";
 import { Inertia } from "@inertiajs/inertia";
-import { Head } from "@inertiajs/inertia-react";
-import { InertiaLink, usePage } from "@inertiajs/inertia-react";
+import { Head, InertiaLink, usePage } from "@inertiajs/inertia-react";
 import { DataGrid } from "@mui/x-data-grid";
 // @ts-ignore
-import AlertMessage from "@/Components/AlertMessage";
+import Authenticated from "@/Layouts/Authenticated"; // eslint-disable-line import/no-unresolved, import/extensions
+// @ts-ignore
+import AlertMessage from "@/Components/AlertMessage"; // eslint-disable-line import/no-unresolved, import/extensions
 
-function destroy(id) {
-    if (confirm("Are you sure you want to delete this contact?")) {
+function destroy(id: number) {
+    if (
+        confirm("Are you sure you want to delete this contact?") // eslint-disable-line no-alert, no-restricted-globals
+    ) {
         // @ts-ignore
-        Inertia.delete(route("companies.destroy", id));
+        Inertia.delete(route("companies.destroy", id)); // eslint-disable-line no-undef
     }
 }
 
-const ActionButtons = ({ id }) => {
+interface ActionButtonPropType {
+    id: number;
+}
+
+function ActionButtons({ id }: ActionButtonPropType) {
     return (
         <>
             <InertiaLink
-                // @ts-ignore
-                href={route("companies.edit", id)}
+                href={
+                    // @ts-ignore
+                    route("companies.edit", id) // eslint-disable-line no-undef
+                }
             >
                 Edit
             </InertiaLink>
             <span className="pl-2 pr-2">|</span>
-            <div onClick={(_) => destroy(id)}>Delete</div>
+            <button type="button" onClick={() => destroy(id)}>
+                Delete
+            </button>
         </>
     );
-};
+}
 
 const columns = [
     {
@@ -70,7 +79,7 @@ const columns = [
     },
 ];
 
-const DataTable = ({ rows }) => {
+function DataTable({ rows }: any) {
     return (
         <div style={{ height: 400, width: "100%" }}>
             <DataGrid
@@ -81,14 +90,14 @@ const DataTable = ({ rows }) => {
             />
         </div>
     );
-};
+}
 
-const Index = (props) => {
+function Index({ auth, errors }: any) {
     const { companies } = usePage().props;
     return (
         <Authenticated
-            auth={props.auth}
-            errors={props.errors}
+            auth={auth}
+            errors={errors}
             header={
                 <div className="flex items-center">
                     <h2 className="font-semibold text-xl text-gray-800 leading-tight col-span-4">
@@ -98,7 +107,7 @@ const Index = (props) => {
                         <InertiaLink
                             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                             // @ts-ignore
-                            href={route("companies.create")}
+                            href={route("companies.create")} // eslint-disable-line no-undef
                         >
                             <span>Create</span>
                             <span className="hidden md:inline"> Company</span>
@@ -121,6 +130,6 @@ const Index = (props) => {
             </div>
         </Authenticated>
     );
-};
+}
 
 export default Index;

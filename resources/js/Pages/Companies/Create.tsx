@@ -1,12 +1,11 @@
 import React from "react";
-// @ts-ignore
-import Authenticated from "@/Layouts/Authenticated";
-import { Head } from "@inertiajs/inertia-react";
-import { InertiaLink, useForm } from "@inertiajs/inertia-react";
+import { Head, InertiaLink, useForm } from "@inertiajs/inertia-react";
 import { Button, Grid, TextField } from "@mui/material";
+// @ts-ignore
+import Authenticated from "@/Layouts/Authenticated"; // eslint-disable-line import/no-unresolved, import/extensions
 
-const Create = (props) => {
-    const { data, setData, errors, post, processing } = useForm({
+function Create({ auth, errors: propError }: any) {
+    const { data, setData, errors, post } = useForm({
         name: "",
         ceo: "",
         address: "",
@@ -16,13 +15,13 @@ const Create = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // @ts-ignore
-        post(route("companies.store"));
+        post(route("companies.store")); // eslint-disable-line no-undef
     };
 
     return (
         <Authenticated
-            auth={props.auth}
-            errors={props.errors}
+            auth={auth}
+            errors={propError}
             header={
                 <div className="flex items-center">
                     <h2 className="font-semibold text-xl text-gray-800 leading-tight col-span-4">
@@ -32,7 +31,7 @@ const Create = (props) => {
                         <InertiaLink
                             className="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                             // @ts-ignore
-                            href={route("companies.index")}
+                            href={route("companies.index")} // eslint-disable-line no-undef
                         >
                             <span>View</span>
                             <span className="hidden md:inline"> Companies</span>
@@ -133,6 +132,6 @@ const Create = (props) => {
             </div>
         </Authenticated>
     );
-};
+}
 
 export default Create;

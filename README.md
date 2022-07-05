@@ -20,6 +20,6 @@
 -   [x] MVC architecture must be used to develop this application.
 -   [x] The frontend must use inertiaJS to talk to Backend.
 -   [x] Prettier and Linter configuration
--   [ ] Dockerise the application
+-   [x] Dockerise the application
 -   [x] Readme file on how to deploy and run the service.
 -   [x] Add a checklist of the above items on ReadMe and check all the items before submitting the assignment.
